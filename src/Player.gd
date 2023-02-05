@@ -2,6 +2,8 @@ extends RigidBody
 
 onready var camera_pivot = find_node("CameraFocus")
 
+onready var seed_root = find_node("Seed")
+
 var mouse_sensitivity = 0.5
 
 var controller_look_sensitivity = 12
@@ -16,6 +18,14 @@ var has_fruit: = false
 func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	pass
+
+func get_seed() -> void:
+	has_fruit = true
+	seed_root.visible = true
+
+func drop_seed() -> void:
+	has_fruit = false
+	seed_root.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("fire1"):
@@ -103,3 +113,7 @@ func _integrate_forces(state: PhysicsDirectBodyState):
 		#print(current_ang_vel)
 		if invert or current_ang_vel < 0.003:
 			state.apply_torque_impulse(perpendicular * torque_amount)
+	
+	if angular_velocity:
+		var av = angular_velocity
+		seed_root.transform.basis = seed_root.transform.basis.rotated(av.normalized() * -1, av.length() * state.step)

@@ -496,6 +496,9 @@ shape = SubResource( 1 )
 
 [node name="RocksParrent" parent="." index="51"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Cylinder055_col" type="StaticBody" parent="RocksParrent/Cylinder055" index="0"]
 collision_layer = 3
