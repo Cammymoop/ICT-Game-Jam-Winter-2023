@@ -497,6 +497,21 @@ shape = SubResource( 1 )
 [node name="Cylinder002" parent="." index="1"]
 visible = false
 
+[node name="Cylinder003" parent="." index="2"]
+visible = false
+
+[node name="Cylinder004" parent="." index="3"]
+visible = false
+
+[node name="Cylinder006" parent="." index="4"]
+visible = false
+
+[node name="Cylinder007" parent="." index="5"]
+visible = false
+
+[node name="Cylinder008" parent="." index="6"]
+visible = false
+
 [node name="RocksParrent" parent="." index="51"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -1459,3 +1474,6 @@ collision_layer = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="RocksParrent/Cylinder230/Cylinder230_col" index="0"]
 shape = SubResource( 160 )
+
+[node name="Cylinder142" parent="." index="52"]
+visible = false
