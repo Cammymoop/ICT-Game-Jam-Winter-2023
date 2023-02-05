@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Gun.gd" type="Script" id=2]
+[ext_resource path="res://assets/Models/DurianModel.glb" type="PackedScene" id=3]
 
 [sub_resource type="PhysicsMaterial" id=7]
 
@@ -26,13 +27,18 @@ script = ExtResource( 1 )
 [node name="Ball" type="Spatial" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="Ball"]
+visible = false
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
 
 [node name="MeshInstance2" type="MeshInstance" parent="Ball"]
 transform = Transform( 0.7389, -0.673735, 0.0103774, 0.535945, 0.596977, 0.596977, -0.4084, -0.435545, 0.802191, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
+
+[node name="DurianModel" parent="Ball" instance=ExtResource( 3 )]
+transform = Transform( 1.31019, 0, 0, 0, 1.31019, 0, 0, 0, 1.31019, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 5 )
