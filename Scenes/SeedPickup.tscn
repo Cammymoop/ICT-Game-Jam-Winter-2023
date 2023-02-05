@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Models/StrawberryModel.glb" type="PackedScene" id=1]
+[ext_resource path="res://src/SeedPickup.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+height = 2.87203
+radius = 1.33983
+
+[sub_resource type="CylinderShape" id=2]
+radius = 2.56226
+
+[sub_resource type="Animation" id=3]
+resource_name = "spin"
+length = 2.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("StrawberryModel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.254382, -0.808529, 0, -0.00564919, 0.109068, 0.980756, 0.161836, 1, 1, 1, 0.5, 1, -0.254382, -0.808529, 0, 0.689505, 0.191557, 0.697493, 0.0373125, 1, 1, 1, 1, 1, -0.254382, -0.808529, 0, 0.980756, 0.161836, 0.00564915, -0.109068, 1, 1, 1, 2, 1, -0.254382, -0.808529, 0, -0.00564919, 0.109068, 0.980756, 0.161836, 1, 1, 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Bob"
+length = 2.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("StrawberryModel:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.9, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.254382, -0.808529, 0 ), Vector3( -0.254382, -0.176664, 0 ), Vector3( -0.254382, -1.59321, 0 ) ]
+}
+
+[node name="SeedPickup" type="RigidBody"]
+collision_mask = 0
+mode = 2
+script = ExtResource( 2 )
+
+[node name="StrawberryModel" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.634272, -0.375001, -0.676072, 0.31621, -0.923827, 0.215766, -0.705486, -0.0769265, 0.704536, -0.254382, -0.167196, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+anims/spin = SubResource( 3 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "Bob"
+anims/Bob = SubResource( 4 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
