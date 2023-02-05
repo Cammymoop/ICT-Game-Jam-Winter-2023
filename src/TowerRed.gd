@@ -2,7 +2,7 @@ extends Spatial
 
 signal activated
 signal deactivated
-
+export var start_on = false
 var activated: = false
 var growth_timer = 0.0
 var time_to_grow = 7.0
@@ -16,6 +16,10 @@ onready var vine_shader : ShaderMaterial = find_node("VineModel").mesh.surface_g
 func _ready():
 	if vine_shader:
 		vine_shader.set_shader_param("progress", 0.0)
+	
+	if start_on:
+		activate()
+		vine_shader.set_shader_param("progress", 2.0)
 
 func start_growth() -> void:
 	growing = true

@@ -121,6 +121,7 @@ shader_param/progress = 0.5
 shader_param/texture_emission = SubResource( 17 )
 
 [sub_resource type="ArrayMesh" id=8]
+resource_local_to_scene = true
 resource_name = "VinesForTower_NurbsPath021"
 surfaces/0 = {
 "aabb": AABB( -6.79887, -0.661829, -4.36997, 8.9243, 4.77355, 4.78402 ),
@@ -145,7 +146,8 @@ script = ExtResource( 2 )
 [node name="Cylinder005" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="StaticBody" type="StaticBody" parent="." groups=["findable"]]
+collision_layer = 16385
 __meta__ = {
 "_edit_group_": true
 }
