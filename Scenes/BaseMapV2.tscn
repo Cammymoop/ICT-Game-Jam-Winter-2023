@@ -503,6 +503,9 @@ collision_layer = 3
 [node name="CollisionShape" type="CollisionShape" parent="RocksParrent/Cylinder055/Cylinder055_col" index="0"]
 shape = SubResource( 2 )
 
+[node name="Cylinder056" parent="RocksParrent" index="1"]
+transform = Transform( 0.128893, 0, 0.171341, 0, 0.153228, 0, -0.171341, 0, 0.128893, -0.956749, -2.2759, 0.593771 )
+
 [node name="Cylinder056_col" type="StaticBody" parent="RocksParrent/Cylinder056" index="0"]
 collision_layer = 3
 

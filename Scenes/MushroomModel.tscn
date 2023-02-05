@@ -12,10 +12,10 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="NurbsPath002" parent="." index="0"]
-transform = Transform( 0.235419, 0.0326852, -0.860436, -0.652775, -0.224366, -0.298546, -0.174546, 0.88318, -0.0440001, -0.273404, 2.66137, 0.596463 )
+transform = Transform( 0.235419, 0.0326852, -0.860436, -0.652775, -0.224366, -0.298546, -0.174546, 0.88318, -0.0440001, -0.273404, 2.2711, 0.596463 )
 
 [node name="StaticBody" type="StaticBody" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540431, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150158, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587621, 0.491464, 0.0123078 )

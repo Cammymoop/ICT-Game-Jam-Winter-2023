@@ -58,7 +58,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45752, 0 )
 [node name="SpringArm" type="SpringArm" parent="Node/Center/CameraFocus"]
 collision_mask = 2
 shape = SubResource( 6 )
-spring_length = 6.0
+spring_length = 7.2
 margin = 0.4
 
 [node name="Camera" type="Camera" parent="Node/Center/CameraFocus/SpringArm"]

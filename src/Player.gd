@@ -11,6 +11,8 @@ var torque_amount = 0.15
 
 var vel_limit = 35.0
 
+var has_fruit: = false
+
 func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	pass

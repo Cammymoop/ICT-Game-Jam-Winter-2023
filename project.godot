@@ -97,6 +97,13 @@ fire2={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Solid"
+3d_physics/layer_2="Blocks Camera"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="Seed"
+
 [physics]
 
 common/enable_pause_aware_picking=true

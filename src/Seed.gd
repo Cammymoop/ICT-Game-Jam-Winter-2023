@@ -10,6 +10,8 @@ func _on_Seed_body_entered(body):
 	get_parent().add_child(new)
 	new.global_transform.origin = global_transform.origin + (Vector3.UP * 1)
 	
+	new.global_rotation.y = rand_range(0, PI * 2)
+	
 	var new2 = Thingy.instance()
 	get_parent().add_child(new2)
 	new2.global_transform.origin = global_transform.origin + (Vector3.UP * 1)
