@@ -15,9 +15,9 @@ func _process(delta):
 	
 	for body in in_range:
 		if timeWhenLastFired + FireCooldown < Time.get_ticks_msec():
-			attck()
+			attck(body.get_parent())
 			
-func attck():
+func attck(node):
 	timeWhenLastFired = Time.get_ticks_msec()
 	var particle = attackParticle.instance()
 	get_parent().add_child(particle)
@@ -27,3 +27,5 @@ func attck():
 	particle.emitting = true
 	particle.get_child(0).emitting = true
 	particle.get_child(1).emitting = true
+	
+	node.takeDamage(1)
