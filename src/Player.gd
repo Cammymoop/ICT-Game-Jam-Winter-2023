@@ -4,6 +4,8 @@ onready var camera_pivot = find_node("CameraFocus")
 
 var mouse_sensitivity = 0.5
 
+var controller_look_sensitivity = 4
+
 var movement_force = 1.0
 var torque_amount = 0.15
 
@@ -18,13 +20,26 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_just_pressed("Esc"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	var controller_h_look = Input.get_axis("controller_look_left", "controller_look_right")
+	var controller_v_look = Input.get_axis("controller_look_up", "controller_look_down")
+	if controller_h_look or controller_v_look:
+		camera_look(Vector2(controller_h_look, controller_v_look), controller_look_sensitivity)
+	
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		var arm = camera_pivot.get_child(0)
-		arm.rotate_x(-event.relative.y * 0.01 * mouse_sensitivity)
-		camera_pivot.rotate_y(-event.relative.x * 0.01 * mouse_sensitivity)
-		arm.rotation.x = clamp(arm.rotation.x, -1.2, 1.2)
+		camera_look(event.relative, mouse_sensitivity)
+#		var arm = camera_pivot.get_child(0)
+#		arm.rotate_x(-event.relative.y * 0.01 * mouse_sensitivity)
+#		camera_pivot.rotate_y(-event.relative.x * 0.01 * mouse_sensitivity)
+#		arm.rotation.x = clamp(arm.rotation.x, -1.2, 1.2)
+
+func camera_look(delta: Vector2, sensitivity) -> void:
+	var arm = camera_pivot.get_child(0)
+	arm.rotate_x(-delta.y * 0.01 * sensitivity)
+	camera_pivot.rotate_y(-delta.x * 0.01 * sensitivity)
+	arm.rotation.x = clamp(arm.rotation.x, -1.2, 1.2)
 
 func comp(vec1: Vector3, vec2: Vector3) -> bool:
 	#print("%s~%s %s~%s %s~%s" % [sign(vec1.x), sign(vec2.x),sign(vec1.y), sign(vec2.y),sign(vec1.z), sign(vec2.z)])
