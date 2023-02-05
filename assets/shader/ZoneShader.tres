@@ -25,7 +25,7 @@ void fragment() {
 	vec3 world_point = (CAMERA_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	
 	float in_radius = step(RADIUS, min_dist(world_point));
-	float in_border = step(BORDER_RADIUS, min_dist(world_point)) - (1.0 - in_radius);
+	float in_border = (1.0 - step(BORDER_RADIUS, min_dist(world_point))) - (1.0 - in_radius);
 	
 	ALBEDO.rgb = vec3(1.0);
 	ALBEDO.r = max(0.54, max(in_radius, 3.0 * in_border));
