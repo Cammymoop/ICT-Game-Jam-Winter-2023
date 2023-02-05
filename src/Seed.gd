@@ -15,6 +15,8 @@ func _on_Seed_body_entered(body):
 	var new2 = Thingy.instance()
 	get_parent().add_child(new2)
 	new2.global_transform.origin = global_transform.origin + (Vector3.UP * 1)
+	if itemToSpawn == 0:
+		new2.healing = true
 	
 	queue_free()
 
