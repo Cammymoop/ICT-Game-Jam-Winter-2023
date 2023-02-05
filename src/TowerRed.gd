@@ -7,6 +7,7 @@ var activated: = false
 var growth_timer = 0.0
 var time_to_grow = 7.0
 var growing: = false
+var IAmTower = true
 
 var inactive_mat = preload("res://assets/Models/Material_009.material")
 var active_mat = preload("res://assets/good_tower_mat.tres")
