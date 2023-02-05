@@ -2,7 +2,7 @@ extends Spatial
 
 var dieParticle = preload("res://Scenes/ParticleScenes/TankDieParticle.tscn")
 var redMat = preload("res://assets/Materials/RedMat.tres")
-var BaseMat = preload("res://map/Material_010.material")
+var BaseMat = preload("res://assets/Models/Material_010.material")
 var target
 
 var turnSpeed = 0.05
