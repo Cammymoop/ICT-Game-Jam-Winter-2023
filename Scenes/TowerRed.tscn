@@ -146,7 +146,8 @@ script = ExtResource( 2 )
 [node name="Cylinder005" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="StaticBody" type="StaticBody" parent="." groups=["findable"]]
+collision_layer = 16385
 __meta__ = {
 "_edit_group_": true
 }
