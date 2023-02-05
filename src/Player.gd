@@ -10,9 +10,14 @@ var torque_amount = 0.15
 var vel_limit = 35.0
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
-
+func _process(delta):
+	if Input.is_action_just_pressed("fire1"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.is_action_just_pressed("Esc"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

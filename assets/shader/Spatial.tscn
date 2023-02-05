@@ -1,0 +1,313 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://new_noisetexture.tres" type="Texture" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "ScalarUniform"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=13]
+uniform_name = "ScalarUniform2"
+hint = 1
+min = -1.0
+
+[sub_resource type="VisualShaderNodeInput" id=3]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=6]
+default_input_values = [ 0, -0.5, 1, 2.0 ]
+operator = 3
+
+[sub_resource type="VisualShaderNodeTexture" id=8]
+texture = ExtResource( 1 )
+
+[sub_resource type="VisualShaderNodeScalarOp" id=9]
+output_port_for_preview = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=10]
+output_port_for_preview = 0
+function = 15
+
+[sub_resource type="VisualShader" id=11]
+code = "shader_type spatial;
+render_mode depth_draw_alpha_prepass, cull_disabled, specular_schlick_ggx, async_visible;
+
+uniform sampler2D tex_frg_7;
+uniform float ScalarUniform2 : hint_range(-1, 1);
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// Texture:7
+	vec4 tex_frg_7_read = texture(tex_frg_7, n_out2p0.xy);
+	vec3 n_out7p0 = tex_frg_7_read.rgb;
+	float n_out7p1 = tex_frg_7_read.a;
+
+// ScalarUniform:13
+	float n_out13p0 = ScalarUniform2;
+
+// ScalarOp:5
+	float n_in5p1 = 2.00000;
+	float n_out5p0 = n_out13p0 / n_in5p1;
+
+// ScalarOp:8
+	float n_out8p0 = dot(n_out7p0, vec3(0.333333, 0.333333, 0.333333)) - n_out5p0;
+
+// ScalarFunc:9
+	float n_out9p0 = round(n_out8p0);
+
+// Output:0
+	ALPHA = n_out9p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -1353.11, 206.767 )
+modes/cull = 2
+modes/depth_draw = 3
+nodes/fragment/0/position = Vector2( 400, 140 )
+nodes/fragment/2/node = SubResource( 3 )
+nodes/fragment/2/position = Vector2( -640, 220 )
+nodes/fragment/5/node = SubResource( 6 )
+nodes/fragment/5/position = Vector2( -640, 420 )
+nodes/fragment/7/node = SubResource( 8 )
+nodes/fragment/7/position = Vector2( -440, 140 )
+nodes/fragment/8/node = SubResource( 9 )
+nodes/fragment/8/position = Vector2( -240, 340 )
+nodes/fragment/9/node = SubResource( 10 )
+nodes/fragment/9/position = Vector2( -20, 360 )
+nodes/fragment/12/node = SubResource( 2 )
+nodes/fragment/12/position = Vector2( -840, 720 )
+nodes/fragment/13/node = SubResource( 13 )
+nodes/fragment/13/position = Vector2( -1220, 400 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 7, 0, 7, 0, 8, 0, 8, 0, 9, 0, 9, 0, 0, 1, 5, 0, 8, 1, 13, 0, 5, 0 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+shader_param/ScalarUniform2 = -1.0
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, -5.046, 0 )
+initial_velocity = 10.0
+damping = 6.94
+damping_random = 0.1
+color = Color( 0.815686, 0.227451, 0.227451, 1 )
+
+[sub_resource type="SpatialMaterial" id=15]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 1
+
+[sub_resource type="QuadMesh" id=16]
+material = SubResource( 15 )
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 0.329032, 0.683871 )
+colors = PoolColorArray( 0.828125, 1, 0, 1, 0.945313, 0.468617, 0.0480042, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 20 )
+
+[sub_resource type="Curve" id=22]
+_data = [ Vector2( 0, 0.561364 ), 0.0, 1.25492, 0, 0, Vector2( 0.38764, 0.879545 ), 0.0, 0.0, 0, 0, Vector2( 0.876405, 0.606818 ), -1.56915, -1.56915, 0, 0, Vector2( 1, 0.197727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 30.0
+damping = 150.0
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 20 )
+
+[sub_resource type="Curve" id=25]
+max_value = 100.0
+_data = [ Vector2( 0.0526316, 100 ), 0.0, -203.192, 0, 0, Vector2( 0.279352, 15.7955 ), -64.1559, -64.1559, 0, 0, Vector2( 0.502024, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=26]
+curve = SubResource( 25 )
+
+[sub_resource type="Curve" id=27]
+_data = [ Vector2( 0, 1 ), 0.0, -2.19348, 0, 0, Vector2( 0.384615, 0.551136 ), 0.0, 0.0, 0, 0, Vector2( 0.696356, 0.360227 ), -1.56915, -1.56915, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=28]
+curve = SubResource( 27 )
+
+[sub_resource type="ParticlesMaterial" id=29]
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3( 0, 1, 0 )
+spread = 133.33
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+damping = 150.0
+damping_curve = SubResource( 26 )
+scale = 2.0
+scale_curve = SubResource( 28 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="Gradient" id=30]
+offsets = PoolRealArray( 0, 0.509677, 1 )
+colors = PoolColorArray( 0.942466, 0.625835, 0.995117, 1, 1, 0.0625, 0.869995, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=31]
+gradient = SubResource( 30 )
+
+[sub_resource type="Curve" id=32]
+max_value = 100.0
+_data = [ Vector2( 0.134831, 99.5455 ), 0.0, -267.0, 0, 0, Vector2( 0.41573, 46.8182 ), -174.266, -174.266, 0, 0, Vector2( 1, 9.54546 ), -4.62336, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=33]
+curve = SubResource( 32 )
+
+[sub_resource type="ParticlesMaterial" id=34]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 120.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=35]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 200.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=36]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 350.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[sub_resource type="CylinderMesh" id=37]
+
+[sub_resource type="CubeMesh" id=38]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 12 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0853001 )
+visible = false
+amount = 200
+lifetime = 2.0
+preprocess = 0.05
+explosiveness = 1.0
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="TankParticle" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.5258 )
+emitting = false
+amount = 25
+lifetime = 0.3
+speed_scale = 0.5
+explosiveness = 1.0
+process_material = SubResource( 17 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="TankDieParticle" type="Particles" parent="."]
+amount = 150
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="AreaEffectParticle" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.02866, -39.67 )
+emitting = false
+amount = 100
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="Particles4" type="Particles" parent="AreaEffectParticle"]
+emitting = false
+amount = 75
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 35 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="Particles5" type="Particles" parent="AreaEffectParticle"]
+emitting = false
+amount = 50
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 36 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00873613, 1.02482, 6.06775e-05 )
+visible = false
+mesh = SubResource( 37 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1.54722, 0, 0, 0, 1, 0, 0, 0, 1.54722, -0.00873613, 2.99104, 6.06775e-05 )
+visible = false
+mesh = SubResource( 37 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 19.9769, 0, 0, 0, 26.0999, 0, 0, 0, 15.4691, 0, -28.4832, 0 )
+mesh = SubResource( 38 )
