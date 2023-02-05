@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/shader/ZoneShader.tres" type="Material" id=1]
+[ext_resource path="res://src/ShaderController.gd" type="Script" id=2]
+[ext_resource path="res://src/MeshInstance.gd" type="Script" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 120, 2, 40 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0792274, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="ShaderController" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.677493, -0.471785, 0.564289, 0, 0.767188, 0.641423, -0.735529, 0.434559, -0.519764, 26.0758, 27.4313, -24.8203 )

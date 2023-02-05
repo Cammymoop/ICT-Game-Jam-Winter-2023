@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 70.4828, 1.41379, 70.4828, -70.4828, -1.48276, -70.4828, -70.4828, -1.48276, 70.4828, -70.4828, 1.41379, -70.4828, 70.4828, -1.48276, -70.4828, -70.4828, 1.41379, 70.4828, 70.4828, -1.48276, 70.4828, 70.4828, 1.41379, -70.4828 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 140, 2, 140 )
+
+[sub_resource type="PhysicsMaterial" id=4]
+rough = true
+
+[sub_resource type="PrismMesh" id=3]
+size = Vector3( 2, 8, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.09526, 0 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+physics_material_override = SubResource( 4 )
+angular_damp = 0.4
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.301, -3.8147e-06, -4.09555 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 4.28919, 0, 0.954975, 0, 4.39421, 0, -0.954975, 0, 4.28919, 22.303, 14.5583, 69.6637 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 7.7922, 0, 1.73491, 0, 7.983, 0, -1.73491, 0, 7.7922, -50.8724, 14.5583, -70.581 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 4.48561, 0, 0.998708, 0, 4.59545, 0, -0.998708, 0, 4.48561, -70.0097, 14.5583, 30.9826 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 2.9298, 0, -3.27496, 0, 3.23702, 0, 2.41252, 0, 2.15825, 64.8981, 10.9251, -36.9358 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 2.9298, 0, -3.27496, 0, 4.39421, 0, 3.27496, 0, 2.9298, 58.0788, 14.5583, -42.2114 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( 2.9298, 0, -3.27496, 0, 4.39421, 0, 3.27496, 0, 2.9298, -35.72, 14.5583, 65.1453 )
+mesh = SubResource( 3 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="."]
+transform = Transform( 2.51118, 0, -2.80702, 0, 3.76635, 0, 2.80702, 0, 2.51118, 65.0237, 12.3954, 44.3092 )
+mesh = SubResource( 3 )

@@ -1,0 +1,42 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode unshaded, blend_mul;
+
+uniform sampler2D center_points : hint_black;
+uniform int active_points = 1;
+
+const int POINT_COUNT = 100;
+
+const float RADIUS = 120.0;
+const float BORDER_RADIUS = 121.0;
+
+float min_dist(vec3 point) {
+	float dist = 10001.0;
+	for (int i = 0; i < active_points; i++) {
+		vec3 center_point = texture(center_points, vec2(float(i)/100.0, 0.5)).xyz;
+		dist = min(dist, distance(point, center_point));
+	}
+	return dist;
+}
+
+void fragment() {
+	vec3 world_point = (CAMERA_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	
+	float in_radius = step(RADIUS, min_dist(world_point));
+	float in_border = step(BORDER_RADIUS, min_dist(world_point)) - (1.0 - in_radius);
+	
+	ALBEDO.rgb = vec3(1.0);
+	ALBEDO.r = max(0.54, max(in_radius, 3.0 * in_border));
+	ALBEDO.g = max(0.03, in_radius);
+	ALBEDO.b = max(0.44, in_radius);
+}"
+
+[sub_resource type="ImageTexture" id=4]
+size = Vector2( 100, 1 )
+
+[resource]
+shader = SubResource( 2 )
+shader_param/active_points = 1
+shader_param/center_points = SubResource( 4 )

@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/Thingy.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 0.396078, 0.247059, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 1 )
+top_radius = 0.35
+bottom_radius = 0.4
+height = 2.4
+
+[sub_resource type="SphereShape" id=3]
+radius = 7.56035
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.634091 ), 0.0, 0.0, 0, 0, Vector2( 0.314607, 0.706818 ), 0.0, 0.0, 0, 0, Vector2( 0.657303, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+direction = Vector3( 0, 1, 0 )
+spread = 18.0
+gravity = Vector3( 0, -40, 0 )
+initial_velocity = 17.0
+damping = 0.3
+scale_curve = SubResource( 5 )
+color = Color( 0.423529, 0.419608, 1, 1 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="Curve" id=10]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 189.545 ), 0.0, 0.0, 0, 0, Vector2( 0.438202, -23.6364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 5
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.1
+emission_ring_height = 0.0
+emission_ring_axis = Vector3( 0, 1, 0 )
+direction = Vector3( 0, 1, 0 )
+spread = 18.0
+gravity = Vector3( 0, 0, 0 )
+radial_accel_curve = SubResource( 11 )
+damping = 0.3
+scale_curve = SubResource( 5 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[node name="Thingy" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00683, 0 )
+mesh = SubResource( 2 )
+
+[node name="ExplodeArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507961, 0 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="ExplodeArea"]
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+autostart = true
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.775138, 0 )
+amount = 24
+explosiveness = 0.91
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="Particles2" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703984, 0 )
+amount = 24
+lifetime = 0.5
+explosiveness = 0.95
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 8 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
