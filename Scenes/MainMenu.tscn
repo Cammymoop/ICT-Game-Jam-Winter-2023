@@ -25,3 +25,4 @@ far = 2000.0
 
 [node name="TowerRedModel" parent="." instance=ExtResource( 5 )]
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 12.7318, 29.1964, -3.99664 )
+start_on = true
