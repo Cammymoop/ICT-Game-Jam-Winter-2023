@@ -35,13 +35,20 @@ func launch():
 			
 			var dist = direction.length()
 			body.apply_central_impulse(direction.normalized() * explosive_force)
+<<<<<<< Updated upstream
+=======
+		elif "IAmTower" in body.get_parent():
+			print("test")
+			continue
+>>>>>>> Stashed changes
 		elif "IAmTank" in body.get_parent():
 			body.get_parent().takeDamage(1)
-		elif "IAmMushroom" in body.get_parent().get_node("Node"):
+		elif body.get_parent().get_node("Node") != null:
+			if "IAmMushroom" in body.get_parent().get_node("Node"):
 			
-			if healing:
-				body.get_parent().get_node("Node").alterHealth(1)
-				print(body.get_parent().get_node("Node").health)
+				if healing:
+					body.get_parent().get_node("Node").alterHealth(1)
+					print(body.get_parent().get_node("Node").health)
 			
 		
 
