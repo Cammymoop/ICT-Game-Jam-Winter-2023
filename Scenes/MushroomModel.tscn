@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Models/MushroomModel.glb" type="PackedScene" id=1]
+[ext_resource path="res://ScaleInScript.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+height = 2.9227
+radius = 0.445139
+
+[node name="MushroomModel" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="NurbsPath002" parent="." index="0"]
+transform = Transform( 0.235419, 0.0326852, -0.860436, -0.652775, -0.224366, -0.298546, -0.174546, 0.88318, -0.0440001, -0.273404, 2.66137, 0.596463 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540431, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587621, 0.491464, 0.0123078 )
+shape = SubResource( 1 )

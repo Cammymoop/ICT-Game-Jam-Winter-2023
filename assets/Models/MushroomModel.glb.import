@@ -13,7 +13,7 @@ dest_files=[ "res://.import/MushroomModel.glb-2b4c65a5d7f1b80b41ff9870e93e8746.s
 
 nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
-nodes/root_scale=1.0
+nodes/root_scale=7.0
 nodes/custom_script=""
 nodes/storage=0
 nodes/use_legacy_names=false
