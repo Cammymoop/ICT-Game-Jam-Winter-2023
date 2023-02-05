@@ -33,7 +33,6 @@ func _process(delta):
 	var in_range = $Area.get_overlapping_bodies()
 	
 	for body in in_range:
-		print(body)
 		if body == $KinematicBody:
 			continue
 		if timeWhenLastFired + FireCooldown < Time.get_ticks_msec():
