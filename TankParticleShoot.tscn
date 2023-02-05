@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 0.329032, 0.683871 )
+colors = PoolColorArray( 0.828125, 1, 0, 1, 0.945313, 0.468617, 0.0480042, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 20 )
+
+[sub_resource type="Curve" id=22]
+_data = [ Vector2( 0, 0.561364 ), 0.0, 1.25492, 0, 0, Vector2( 0.38764, 0.879545 ), 0.0, 0.0, 0, 0, Vector2( 0.876405, 0.606818 ), -1.56915, -1.56915, 0, 0, Vector2( 1, 0.197727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+direction = Vector3( 0, 1, 0.01 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 30.0
+damping = 150.0
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 21 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+
+[node name="TankParticle" type="Particles"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+emitting = false
+amount = 25
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+process_material = SubResource( 17 )
+draw_pass_1 = SubResource( 19 )

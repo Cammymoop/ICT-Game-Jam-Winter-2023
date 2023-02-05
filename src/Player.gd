@@ -15,9 +15,15 @@ var vel_limit = 35.0
 
 var has_fruit: = false
 
+var zoom: = false
+var zoom_time = 6.0
+var zoom_timer = 0.0
+
+var material : SpatialMaterial
+
 func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	pass
+	material = $Ball/DurianModel/Icosphere002.mesh.surface_get_material(0)
 
 func get_seed() -> void:
 	has_fruit = true
@@ -37,6 +43,20 @@ func _process(delta):
 	var controller_v_look = Input.get_axis("controller_look_up", "controller_look_down")
 	if controller_h_look or controller_v_look:
 		camera_look(Vector2(controller_h_look, controller_v_look), controller_look_sensitivity)
+	
+	var detected_zones = len($DetectZone.get_overlapping_areas())
+	if detected_zones < 1:
+		if zoom:
+			zoom_timer += delta
+			if zoom_timer >= zoom_time:
+				zoom = false
+				material.emission_energy = 1.0
+				
+	
+	if detected_zones > 0:
+		zoom = true
+		material.emission_energy = 1.8
+		zoom_timer = 0
 	
 
 func _unhandled_input(event):
@@ -65,13 +85,17 @@ func _integrate_forces(state: PhysicsDirectBodyState):
 	
 	var move_vec = Vector3.ZERO
 	
+	var actual_vel_limit = vel_limit
+	if zoom:
+		actual_vel_limit *= 2
+	
 	var fb = Input.get_axis("backward", "forward")
 	if fb != 0:
 		var projected = state.linear_velocity.project(forward_vec * fb)
 		var current_vel = projected.length() * sign(projected.dot(forward_vec * fb))
 		
 		var effective_force = movement_force
-		if current_vel > vel_limit:
+		if current_vel > actual_vel_limit:
 			effective_force = 0
 		if current_vel < 0:
 			effective_force *= 2
@@ -85,7 +109,7 @@ func _integrate_forces(state: PhysicsDirectBodyState):
 		var current_vel = projected.length() * sign(projected.dot(left_vec * lr))
 		
 		var effective_force = movement_force
-		if current_vel > vel_limit:
+		if current_vel > actual_vel_limit:
 			effective_force = 0
 		if current_vel < 0:
 			effective_force *= 2

@@ -4,6 +4,8 @@ var tower_points = []
 
 var towers_on: = false
 
+var tower_radius = 120.0;
+
 func _ready():
 #	var tower_point = {"position": get_node("BaseMapV2/Cylinder002").global_transform.origin, "enabled": false}
 #	tower_points.append(tower_point)
