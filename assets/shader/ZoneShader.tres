@@ -9,8 +9,8 @@ uniform int active_points = 1;
 
 const int POINT_COUNT = 100;
 
-const float RADIUS = 120.0;
-const float BORDER_RADIUS = 121.0;
+const float RADIUS = 190.0;
+const float BORDER_RADIUS = 191.0;
 
 float min_dist(vec3 point) {
 	float dist = 10001.0;

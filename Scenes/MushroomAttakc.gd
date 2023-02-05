@@ -58,4 +58,3 @@ func flashRed():
 	get_parent().get_node("NurbsPath002").set_surface_material(0, redMat)
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_parent().get_node("NurbsPath002").set_surface_material(0, BaseMat)
-	

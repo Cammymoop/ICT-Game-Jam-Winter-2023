@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=2]
+
+[sub_resource type="Gradient" id=30]
+offsets = PoolRealArray( 0, 0.509677, 1 )
+colors = PoolColorArray( 0.942466, 0.625835, 0.995117, 1, 1, 0.0625, 0.869995, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=31]
+gradient = SubResource( 30 )
+
+[sub_resource type="Curve" id=32]
+max_value = 100.0
+_data = [ Vector2( 0.134831, 99.5455 ), 0.0, -267.0, 0, 0, Vector2( 0.41573, 46.8182 ), -174.266, -174.266, 0, 0, Vector2( 1, 9.54546 ), -4.62336, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=33]
+curve = SubResource( 32 )
+
+[sub_resource type="Curve" id=22]
+_data = [ Vector2( 0, 0.561364 ), 0.0, 1.25492, 0, 0, Vector2( 0.38764, 0.879545 ), 0.0, 0.0, 0, 0, Vector2( 0.876405, 0.606818 ), -1.56915, -1.56915, 0, 0, Vector2( 1, 0.197727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="ParticlesMaterial" id=34]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 120.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=35]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 200.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=36]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 0.92
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 100.0
+damping = 350.0
+damping_random = 0.1
+damping_curve = SubResource( 33 )
+scale_curve = SubResource( 23 )
+color_ramp = SubResource( 31 )
+
+[node name="AreaEffectParticle" type="Particles"]
+emitting = false
+amount = 100
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="Particles4" type="Particles" parent="."]
+emitting = false
+amount = 75
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 35 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="Particles5" type="Particles" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.8
+process_material = SubResource( 36 )
+draw_pass_1 = SubResource( 19 )
