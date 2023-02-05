@@ -38,6 +38,8 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_just_pressed("Esc"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("restart"):
+		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	
 	var controller_h_look = Input.get_axis("controller_look_left", "controller_look_right")
 	var controller_v_look = Input.get_axis("controller_look_up", "controller_look_down")
