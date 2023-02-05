@@ -1,6 +1,6 @@
 extends Spatial
 
-var explosive_force = 47.0
+var explosive_force = 57.0
 
 func _ready():
 	$Particles.emitting = false
@@ -27,7 +27,7 @@ func launch():
 	for body in in_range:
 		print(body.name)
 		var body_pos: Vector3 = body.global_transform.origin
-		var direction = body_pos - global_transform.origin
+		var direction = body_pos - $ExplodeArea.global_transform.origin
 		
 		var dist = direction.length()
 		body.apply_central_impulse(direction.normalized() * explosive_force)

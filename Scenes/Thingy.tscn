@@ -17,7 +17,7 @@ bottom_radius = 0.4
 height = 2.4
 
 [sub_resource type="SphereShape" id=3]
-radius = 7.56035
+radius = 8.54802
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 0.634091 ), 0.0, 0.0, 0, 0, Vector2( 0.314607, 0.706818 ), 0.0, 0.0, 0, 0, Vector2( 0.657303, 0 ), 0.0, 0.0, 0, 0 ]
@@ -78,7 +78,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00683, 0 )
 mesh = SubResource( 2 )
 
 [node name="ExplodeArea" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507961, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86105, 0 )
 collision_layer = 0
 collision_mask = 4
 

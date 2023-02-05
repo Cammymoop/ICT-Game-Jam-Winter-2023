@@ -1,5 +1,7 @@
 extends Spatial
 
+signal activated
+signal deactivated
 
 var activated: = false
 var growth_timer = 0.0
@@ -18,11 +20,11 @@ func _process(delta):
 
 
 func activate() -> void:
-	pass
+	emit_signal("activated", self)
 
 
 func _on_FruitDetector_body_entered(body):
-	if body.name == "Player" and body.has_seed:
+	if body.name == "Player" and body.has_fruit:
 		body.drop_seed()
 		
 		start_growth()

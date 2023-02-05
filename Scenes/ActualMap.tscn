@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BaseMapV2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ActualMap.gd" type="Script" id=3]
 [ext_resource path="res://src/ShaderController.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/TankBaseModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Seed.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/SeedPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/TowerRed.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 3 )
@@ -27,3 +27,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2922, 0, 249.505 )
 
 [node name="SeedPickup" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4949, 53.5555, 208.579 )
+
+[node name="Towers" type="Spatial" parent="."]
+
+[node name="TowerRedModel" parent="Towers" instance=ExtResource( 7 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -9.3416, 34.2501, 40.6957 )
