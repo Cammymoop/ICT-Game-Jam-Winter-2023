@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 0.329032, 0.683871 )
+colors = PoolColorArray( 0.828125, 1, 0, 1, 0.945313, 0.468617, 0.0480042, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 20 )
+
+[sub_resource type="Curve" id=25]
+max_value = 100.0
+_data = [ Vector2( 0.0526316, 100 ), 0.0, -203.192, 0, 0, Vector2( 0.279352, 15.7955 ), -64.1559, -64.1559, 0, 0, Vector2( 0.502024, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=26]
+curve = SubResource( 25 )
+
+[sub_resource type="Curve" id=27]
+_data = [ Vector2( 0, 1 ), 0.0, -2.19348, 0, 0, Vector2( 0.384615, 0.551136 ), 0.0, 0.0, 0, 0, Vector2( 0.696356, 0.360227 ), -1.56915, -1.56915, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=28]
+curve = SubResource( 27 )
+
+[sub_resource type="ParticlesMaterial" id=29]
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3( 0, 1, 0 )
+spread = 133.33
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+damping = 150.0
+damping_curve = SubResource( 26 )
+scale = 2.0
+scale_curve = SubResource( 28 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+
+[node name="TankDieParticle" type="Particles"]
+emitting = false
+amount = 150
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+process_material = SubResource( 29 )
+draw_pass_1 = SubResource( 19 )

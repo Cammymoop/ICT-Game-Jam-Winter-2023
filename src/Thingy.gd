@@ -25,12 +25,16 @@ func launch():
 	var in_range = $ExplodeArea.get_overlapping_bodies()
 	
 	for body in in_range:
-		print(body.name)
-		var body_pos: Vector3 = body.global_transform.origin
-		var direction = body_pos - $ExplodeArea.global_transform.origin
+		if "IAmTank" in body.get_parent():
+			body.get_parent().takeDamage(1)
+		else:
+			print(body.name)
+			var body_pos: Vector3 = body.global_transform.origin
+			var direction = body_pos - $ExplodeArea.global_transform.origin
+			
+			var dist = direction.length()
+			body.apply_central_impulse(direction.normalized() * explosive_force)
 		
-		var dist = direction.length()
-		body.apply_central_impulse(direction.normalized() * explosive_force)
 
 
 func _on_Timer_timeout():

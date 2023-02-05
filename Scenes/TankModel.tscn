@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Models/TankModel.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/TankScript.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
 
 [node name="TankModel" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="Cube" parent="." index="0"]
+transform = Transform( 1, 0, 4.13264e-07, 0, 0.284785, 0, -4.13264e-07, 0, 1, 0, 0.601884, 0 )
+
+[node name="KinematicBody" type="KinematicBody" parent="." index="1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 0.284785, 0, 3.25841e-07, 0, -1, 0, 0.601884, 0 )
+collision_layer = 257
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="LookAt" type="Spatial" parent="." index="2"]
