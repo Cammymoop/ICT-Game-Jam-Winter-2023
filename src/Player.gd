@@ -4,7 +4,7 @@ onready var camera_pivot = find_node("CameraFocus")
 
 var mouse_sensitivity = 0.5
 
-var controller_look_sensitivity = 4
+var controller_look_sensitivity = 12
 
 var movement_force = 1.0
 var torque_amount = 0.15
