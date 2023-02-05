@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=9 format=2]
-=======
 [gd_scene load_steps=38 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BaseMapV2.tscn" type="PackedScene" id=2]
@@ -12,12 +8,10 @@
 [ext_resource path="res://Scenes/SeedPickup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/TowerRed.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/TankModel.tscn" type="PackedScene" id=8]
-<<<<<<< Updated upstream
-=======
 [ext_resource path="res://Scenes/YouWin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Models/Material_009.material" type="Material" id=10]
 
-[sub_resource type="ArrayMesh" id=32]
+[sub_resource type="ArrayMesh" id=44]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -81,7 +75,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="Image" id=44]
+[sub_resource type="Image" id=54]
 data = {
 "data": PoolByteArray( 217, 175, 128, 255, 176, 121, 114, 255, 82, 67, 82, 255, 104, 104, 135, 255, 127, 155, 176, 255, 191, 212, 176, 255, 144, 184, 112, 255, 98, 140, 112, 255, 157, 0, 255, 255, 70, 69, 154, 255, 58, 89, 64, 255, 140, 203, 217, 255, 113, 212, 235, 255, 171, 65, 39, 255, 120, 85, 128, 255, 208, 82, 138, 255 ),
 "format": "RGBA8",
@@ -91,7 +85,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id=17]
-image = SubResource( 44 )
+image = SubResource( 54 )
 size = Vector2( 8, 2 )
 
 [sub_resource type="ShaderMaterial" id=12]
@@ -127,7 +121,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=35]
+[sub_resource type="ArrayMesh" id=46]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -191,7 +185,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="Image" id=45]
+[sub_resource type="Image" id=55]
 data = {
 "data": PoolByteArray( 217, 175, 128, 255, 176, 121, 114, 255, 82, 67, 82, 255, 104, 104, 135, 255, 127, 155, 176, 255, 191, 212, 176, 255, 144, 184, 112, 255, 98, 140, 112, 255, 157, 0, 255, 255, 70, 69, 154, 255, 58, 89, 64, 255, 140, 203, 217, 255, 113, 212, 235, 255, 171, 65, 39, 255, 120, 85, 128, 255, 208, 82, 138, 255 ),
 "format": "RGBA8",
@@ -201,7 +195,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id=38]
-image = SubResource( 45 )
+image = SubResource( 55 )
 size = Vector2( 8, 2 )
 
 [sub_resource type="ShaderMaterial" id=19]
@@ -237,7 +231,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=39]
+[sub_resource type="ArrayMesh" id=49]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -286,7 +280,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=40]
+[sub_resource type="ArrayMesh" id=50]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -335,7 +329,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=41]
+[sub_resource type="ArrayMesh" id=51]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -384,7 +378,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=42]
+[sub_resource type="ArrayMesh" id=52]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -433,7 +427,7 @@ surfaces/0 = {
 "vertex_count": 848
 }
 
-[sub_resource type="ArrayMesh" id=43]
+[sub_resource type="ArrayMesh" id=53]
 resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
@@ -481,7 +475,6 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 848
 }
->>>>>>> Stashed changes
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 3 )
@@ -503,8 +496,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2922, 0, 249.505 )
 [node name="SeedPickup" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4949, 53.5555, 208.579 )
 
-<<<<<<< Updated upstream
-=======
 [node name="SeedPickup8" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0406, 53.5555, 468.8 )
 
@@ -535,18 +526,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 581.472, 205.276, 838.388 )
 [node name="SeedPickup7" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 557.216, 57.1599, 266.737 )
 
->>>>>>> Stashed changes
 [node name="Towers" type="Spatial" parent="."]
 
 [node name="TowerRedModel" parent="Towers" instance=ExtResource( 7 )]
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -9.3416, 34.2501, 40.6957 )
 
-<<<<<<< Updated upstream
-[node name="TankModel" parent="." instance=ExtResource( 8 )]
-transform = Transform( -1.61773, 0, -1.17599, 0, 2, 0, 1.17599, 0, -1.61773, 85.898, 27.8344, 194.139 )
-=======
 [node name="Cylinder005" parent="Towers/TowerRedModel" index="0"]
-mesh = SubResource( 32 )
+mesh = SubResource( 44 )
 
 [node name="VineModel" parent="Towers/TowerRedModel/VinesForTower" index="0"]
 mesh = SubResource( 34 )
@@ -555,7 +541,7 @@ mesh = SubResource( 34 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 85.0911, 17.0364, 279.828 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel2" index="0"]
-mesh = SubResource( 35 )
+mesh = SubResource( 46 )
 
 [node name="VineModel" parent="Towers/TowerRedModel2/VinesForTower" index="0"]
 mesh = SubResource( 20 )
@@ -564,7 +550,7 @@ mesh = SubResource( 20 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -459.031, 116.393, 336.138 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel3" index="0"]
-mesh = SubResource( 39 )
+mesh = SubResource( 49 )
 
 [node name="VineModel" parent="Towers/TowerRedModel3/VinesForTower" index="0"]
 mesh = SubResource( 23 )
@@ -573,7 +559,7 @@ mesh = SubResource( 23 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -569.772, -20.3248, 36.5134 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel4" index="0"]
-mesh = SubResource( 40 )
+mesh = SubResource( 50 )
 
 [node name="VineModel" parent="Towers/TowerRedModel4/VinesForTower" index="0"]
 mesh = SubResource( 25 )
@@ -582,7 +568,7 @@ mesh = SubResource( 25 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 331.201, 72.0446, -382.59 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel5" index="0"]
-mesh = SubResource( 41 )
+mesh = SubResource( 51 )
 
 [node name="VineModel" parent="Towers/TowerRedModel5/VinesForTower" index="0"]
 mesh = SubResource( 27 )
@@ -591,7 +577,7 @@ mesh = SubResource( 27 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 491.23, 0.150307, 549.599 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel6" index="0"]
-mesh = SubResource( 42 )
+mesh = SubResource( 52 )
 
 [node name="VineModel" parent="Towers/TowerRedModel6/VinesForTower" index="0"]
 mesh = SubResource( 29 )
@@ -600,7 +586,7 @@ mesh = SubResource( 29 )
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 325.89, 149.311, 834.354 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel7" index="0"]
-mesh = SubResource( 43 )
+mesh = SubResource( 53 )
 
 [node name="VineModel" parent="Towers/TowerRedModel7/VinesForTower" index="0"]
 mesh = SubResource( 31 )
@@ -674,4 +660,3 @@ visible = false
 [editable path="Towers/TowerRedModel5"]
 [editable path="Towers/TowerRedModel6"]
 [editable path="Towers/TowerRedModel7"]
->>>>>>> Stashed changes
