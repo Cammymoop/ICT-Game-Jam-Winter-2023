@@ -1,6 +1,7 @@
 extends Spatial
 
 var seed_scn = preload("res://Scenes/Seed.tscn")
+var flowerScn = preload("res://Scenes/SmallFlowerModel.tscn")
 onready var aim = $"../CameraFocus/SpringArm"
 onready var player = find_parent("Player")
 onready var world: Node = player.get_parent()
