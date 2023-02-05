@@ -7,6 +7,10 @@
 height = 2.9227
 radius = 0.445139
 
+[sub_resource type="CylinderShape" id=2]
+height = 16.22
+radius = 7.05843
+
 [node name="MushroomModel" instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 2 )
@@ -20,3 +24,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150158, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587621, 0.491464, 0.0123078 )
 shape = SubResource( 1 )
+
+[node name="Node" type="Node" parent="." index="2"]
+script = ExtResource( 3 )
+
+[node name="Area" type="Area" parent="." index="3"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196382, 0 )
+shape = SubResource( 2 )
