@@ -486,6 +486,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1476, 54.0804, -25.6748 )
 
 [node name="ShaderController" type="Node" parent="."]
 script = ExtResource( 4 )
+point_factor = 2.0
+enable_debugs = true
 
 [node name="TankBaseModel" parent="." instance=ExtResource( 6 )]
 transform = Transform( 4.57024, 0, -5.30216, 0, 7, 0, 5.30216, 0, 4.57024, 141.983, -3.09217, 227.419 )
@@ -538,7 +540,7 @@ mesh = SubResource( 44 )
 mesh = SubResource( 34 )
 
 [node name="TowerRedModel2" parent="Towers" instance=ExtResource( 7 )]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 85.0911, 17.0364, 279.828 )
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 85.0911, 16.7783, 279.828 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel2" index="0"]
 mesh = SubResource( 46 )
@@ -547,7 +549,7 @@ mesh = SubResource( 46 )
 mesh = SubResource( 20 )
 
 [node name="TowerRedModel3" parent="Towers" instance=ExtResource( 7 )]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -459.031, 116.393, 336.138 )
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -459.031, 116.652, 336.138 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel3" index="0"]
 mesh = SubResource( 49 )
@@ -556,7 +558,7 @@ mesh = SubResource( 49 )
 mesh = SubResource( 23 )
 
 [node name="TowerRedModel4" parent="Towers" instance=ExtResource( 7 )]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -569.772, -20.3248, 36.5134 )
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -569.772, -22.9424, 36.5134 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel4" index="0"]
 mesh = SubResource( 50 )
@@ -565,7 +567,7 @@ mesh = SubResource( 50 )
 mesh = SubResource( 25 )
 
 [node name="TowerRedModel5" parent="Towers" instance=ExtResource( 7 )]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 331.201, 72.0446, -382.59 )
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 331.201, 68.4176, -382.59 )
 
 [node name="Cylinder005" parent="Towers/TowerRedModel5" index="0"]
 mesh = SubResource( 51 )

@@ -5,6 +5,11 @@ var shader_resource = preload("res://assets/shader/ZoneShader.tres")
 var point_img_data : Image
 var points : Array = []
 
+export(float, 1.2, 2.4, 0.05) var point_factor = 1.8
+
+export var debug_points = PoolVector3Array()
+export var enable_debugs = false
+
 func vec_to_color(vec: Vector3) -> Color:
 	return Color(vec.x, vec.y, vec.z)
 
@@ -20,8 +25,17 @@ func _ready():
 #		pos.x += 12 * len(points)
 #		add_point({"enabled": true, "position": pos})
 
+func _process(_delta):
+	if not Engine.editor_hint or not enable_debugs:
+		return
+	
+	points = []
+	for point in debug_points:
+		add_point({"position": point * point_factor, "enabled": true})
+	update_points()
+
 func add_point(point_info : Dictionary) -> void:
-	point_info.color = vec_to_color(point_info.position)
+	point_info.color = vec_to_color(point_info.position * point_factor)
 	points.append(point_info)
 	
 	update_points()
@@ -37,7 +51,7 @@ func update_points() -> void:
 	
 	var x = 0
 	for ep in enabled_points:
-		point_img_data.set_pixel(x, 0, ep.color)
+		point_img_data.set_pixel(x * 2, 0, ep.color)
 		x += 1
 		if x >= 100:
 			break
@@ -51,4 +65,4 @@ func update_points() -> void:
 	tex.create_from_image(point_img_data)
 	shader_resource.set_shader_param("center_points", tex)
 	
-	shader_resource.set_shader_param("active_points", len(enabled_points))
+	shader_resource.set_shader_param("active_points", len(enabled_points) * 2)

@@ -22,7 +22,7 @@ func _ready():
 	pass#target = get_parent().find_node("Player")
 
 func acquire_target() -> void:
-	print("a")
+	#("a")
 	target = null
 	var targets = get_tree().get_nodes_in_group("findable")
 	
@@ -34,6 +34,9 @@ func acquire_target() -> void:
 		if dist_to_target > max_range:
 			continue
 		if dist_to_target > min_dist:
+			continue
+		
+		if "activated" in body.get_parent() and not body.get_parent().activated:
 			continue
 		
 		min_dist = dist_to_target
@@ -54,7 +57,7 @@ func _process(delta):
 	newTarget.y = global_translation.y
 	
 	var dist = (global_translation - newTarget).length()
-	print(global_translation, " ", newTarget)
+	#print(global_translation, " ", newTarget)
 	if dist <= my_range:
 	
 		$LookAt.look_at(newTarget,Vector3.UP)

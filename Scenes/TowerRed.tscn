@@ -40,7 +40,7 @@ height = 3.79534
 radius = 0.134093
 
 [sub_resource type="CylinderShape" id=7]
-height = 3.69583
+height = 5.20786
 radius = 2.21225
 
 [sub_resource type="Shader" id=9]
