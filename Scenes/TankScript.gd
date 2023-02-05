@@ -8,12 +8,13 @@ var BaseMat = preload("res://assets/Models/Material_010.material")
 var target
 
 var turnSpeed = 0.05
-var isLooking = true
 var enabled = true
-var TankHealth = 3
+var TankHealth: = 3.0
 var IAmTank = true
 var timeWhenLastFired = 0
 var FireCooldown = 2000
+
+var my_range = 6.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,11 +25,11 @@ func _ready():
 func _process(delta):
 	if !enabled:
 		return
-	if isLooking:
-		var newTarget = target.global_translation
-		newTarget.y = global_translation.y
-		$LookAt.look_at(newTarget,Vector3.UP)
-		global_transform = global_transform.interpolate_with($LookAt.global_transform,turnSpeed)
+	
+	var newTarget = target.global_translation
+	newTarget.y = global_translation.y
+	$LookAt.look_at(newTarget,Vector3.UP)
+	global_transform = global_transform.interpolate_with($LookAt.global_transform,turnSpeed)
 	
 	var in_range = $Area.get_overlapping_bodies()
 	
@@ -58,7 +59,8 @@ func takeDamage(damage):
 	print(TankHealth)
 	if(TankHealth <= 0):
 		Die()
-		
+		return
+	
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_node("Cube").set_surface_material(0, BaseMat)
 		

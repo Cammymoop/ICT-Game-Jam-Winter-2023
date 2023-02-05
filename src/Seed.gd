@@ -13,6 +13,7 @@ func _on_Seed_body_entered(body):
 	new.global_rotation.y = rand_range(0, PI * 2)
 	
 	var new2 = Thingy.instance()
+	new2.damage_amount = 0.3
 	get_parent().add_child(new2)
 	new2.global_transform.origin = global_transform.origin + (Vector3.UP * 1)
 	if itemToSpawn == 0:

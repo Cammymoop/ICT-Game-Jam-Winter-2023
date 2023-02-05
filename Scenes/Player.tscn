@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Gun.gd" type="Script" id=2]
 [ext_resource path="res://assets/Models/Material_002.material" type="Material" id=3]
 [ext_resource path="res://assets/Models/StrawberryModel.glb" type="PackedScene" id=4]
+[ext_resource path="res://assets/Models/MushroomModel.glb" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=7]
 
@@ -32,6 +33,17 @@ surfaces/0 = {
 radius = 1.47784
 
 [sub_resource type="SphereShape" id=6]
+
+[sub_resource type="Animation" id=10]
+resource_name = "grow"
+length = 0.4
+tracks/0/type = "transform"
+tracks/0/path = NodePath("../MushroomModel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1.10807, 0.652154, 0, 0, 0, 0, 1, 0, 0, 0, 0.4, 1, 1.10807, 0.652154, 0, 0, 0, 0, 1, 0.3, 0.3, 0.3 )
 
 [sub_resource type="SphereShape" id=8]
 radius = 1.13777
@@ -91,12 +103,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14369, 0 )
 script = ExtResource( 2 )
 fireCooldown = 500
 
+[node name="AnimateMush" type="AnimationPlayer" parent="Node/Center/Gun"]
+anims/grow = SubResource( 10 )
+
 [node name="Seed" type="Spatial" parent="Node/Center"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26477, 0 )
 visible = false
 
 [node name="StrawberryModel" parent="Node/Center/Seed" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96636, 0 )
+
+[node name="MushroomModel" parent="Node/Center" instance=ExtResource( 5 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.10807, 0.652154, 0 )
 
 [node name="DetectZone" type="Area" parent="."]
 collision_layer = 32768

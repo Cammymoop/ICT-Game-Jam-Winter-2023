@@ -3,6 +3,8 @@ extends Spatial
 var explosive_force = 57.0
 var healing = false
 
+var damage_amount: = 1.0
+
 func _ready():
 	$Particles.emitting = false
 	$Particles.one_shot = true

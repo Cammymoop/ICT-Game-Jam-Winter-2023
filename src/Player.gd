@@ -16,7 +16,7 @@ var vel_limit = 35.0
 var has_fruit: = false
 
 var zoom: = false
-var zoom_time = 6.0
+var zoom_time = 11.0
 var zoom_timer = 0.0
 
 var material : SpatialMaterial
@@ -87,7 +87,7 @@ func _integrate_forces(state: PhysicsDirectBodyState):
 	
 	var actual_vel_limit = vel_limit
 	if zoom:
-		actual_vel_limit *= 2
+		actual_vel_limit *= 3
 	
 	var fb = Input.get_axis("backward", "forward")
 	if fb != 0:
