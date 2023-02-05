@@ -67,3 +67,4 @@ far = 1200.0
 [node name="Gun" type="Spatial" parent="Node/Center"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14369, 0 )
 script = ExtResource( 2 )
+fireCooldown = 500
