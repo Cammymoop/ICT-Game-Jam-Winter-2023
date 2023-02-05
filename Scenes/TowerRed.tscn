@@ -4,6 +4,7 @@
 [ext_resource path="res://src/TowerRed.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
+resource_local_to_scene = true
 resource_name = "TowerRedModel_Cylinder005"
 surfaces/0 = {
 "aabb": AABB( -2.18677, -0.0648375, -2.18677, 4.37354, 15.0752, 4.37354 ),
