@@ -6,7 +6,7 @@ var towers_on: = false
 
 var tower_radius = 120.0;
 
-var totalTowers = 7
+onready var totalTowers: int = $Towers.get_child_count()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

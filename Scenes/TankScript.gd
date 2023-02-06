@@ -9,7 +9,7 @@ var BaseMat = preload("res://assets/Models/Material_010.material")
 
 var target_ref: WeakRef
 
-var turnSpeed = 0.05
+var turnSpeed = 0.025
 var enabled = true
 var TankHealth: = 3.0
 var IAmTank = true
@@ -79,7 +79,9 @@ func _process(delta):
 #		queue_free()
 	
 		$LookAt.look_at(newTarget,Vector3.UP)
-		global_transform = global_transform.interpolate_with($LookAt.global_transform,turnSpeed)
+		var angle = global_transform.basis.get_rotation_quat().angle_to($LookAt.global_transform.basis.get_rotation_quat())
+		if angle > PI/6:
+			global_transform = global_transform.interpolate_with($LookAt.global_transform,turnSpeed)
 	
 		var in_range = $Area.get_overlapping_bodies()
 	
