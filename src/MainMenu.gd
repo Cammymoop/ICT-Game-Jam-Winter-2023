@@ -10,6 +10,8 @@ func _ready():
 	if shader_resource.get_shader_param("active_points") > 0:
 		return
 	show_one()
+	
+	Engine.target_fps = 60
 
 func show_one():
 	$TowerRedModel.activate()

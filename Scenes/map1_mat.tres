@@ -1,0 +1,27 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="Image" id=3]
+data = {
+"data": PoolByteArray( 217, 175, 128, 255, 176, 121, 114, 255, 82, 67, 82, 255, 104, 104, 135, 255, 127, 155, 176, 255, 191, 212, 176, 255, 144, 184, 112, 255, 98, 140, 112, 255, 157, 0, 255, 255, 70, 69, 154, 255, 58, 89, 64, 255, 140, 203, 217, 255, 113, 212, 235, 255, 171, 65, 39, 255, 120, 85, 128, 255, 208, 82, 138, 255 ),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 8
+}
+
+[sub_resource type="ImageTexture" id=2]
+image = SubResource( 3 )
+size = Vector2( 8, 2 )
+
+[resource]
+resource_name = "Material.010"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.5
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = SubResource( 2 )
