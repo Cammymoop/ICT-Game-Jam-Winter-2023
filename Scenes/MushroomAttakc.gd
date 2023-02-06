@@ -6,7 +6,7 @@ var BaseMat = preload("res://assets/Models/Material_002.material")
 var attackParticle = preload("res://Scenes/ParticleScenes/AreaEffectParticle.tscn")
 var timeWhenLastFired = 0
 var FireCooldown = 2000
-var health = 3
+var health = 5
 var maxHealth
 var IAmMushroom = true;
 
@@ -17,10 +17,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health <= 0:
+		return
+	
 	var in_range = $"../Area".get_overlapping_bodies()
 	
-	for body in in_range:
-		if timeWhenLastFired + FireCooldown < Time.get_ticks_msec():
+	if timeWhenLastFired + FireCooldown < Time.get_ticks_msec():
+		for body in in_range:
 			attck(body.get_parent())
 			
 func attck(node):
@@ -37,24 +40,23 @@ func attck(node):
 	node.takeDamage(1)
 
 func alterHealth(Ammount):
-	if(Ammount >0):
-		heal()
+	if Ammount > 0:
+		if health < maxHealth:
+			flash_green()
 	else:
 		flashRed()
 	health += Ammount
 	if health > maxHealth:
 		health = maxHealth
 	if(health <= 0):
-		queue_free()
+		get_parent().shrink()
 		
-func heal():
-	
+func flash_green():
 	get_parent().get_node("NurbsPath002").set_surface_material(0, greenMat)
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_parent().get_node("NurbsPath002").set_surface_material(0, BaseMat)
 	
 func flashRed():
-	
 	get_parent().get_node("NurbsPath002").set_surface_material(0, redMat)
 	yield(get_tree().create_timer(0.25), "timeout")
 	get_parent().get_node("NurbsPath002").set_surface_material(0, BaseMat)

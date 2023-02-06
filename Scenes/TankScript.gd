@@ -5,7 +5,9 @@ var dieParticle = preload("res://Scenes/ParticleScenes/TankDieParticle.tscn")
 var redMat = preload("res://assets/Materials/RedMat.tres")
 var BaseMat = preload("res://assets/Models/Material_010.material")
 
-var target
+#var pole_scn = preload("res://Scenes/pole.tscn")
+
+var target_ref: WeakRef
 
 var turnSpeed = 0.05
 var enabled = true
@@ -14,16 +16,19 @@ var IAmTank = true
 var timeWhenLastFired = 0
 var FireCooldown = 2000
 
-var my_range = 6.5
+var my_range = 12.5
 var max_range = 200.0
+
+var attack_damage = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass#target = get_parent().find_node("Player")
+#	$KinematicBody.set_collision_layer_bit(6, false)
+	pass
 
 func acquire_target() -> void:
 	#("a")
-	target = null
+	target_ref = null
 	var targets = get_tree().get_nodes_in_group("findable")
 	
 	var min_dist = max_range
@@ -36,11 +41,13 @@ func acquire_target() -> void:
 		if dist_to_target > min_dist:
 			continue
 		
-		if "activated" in body.get_parent() and not body.get_parent().activated:
-			continue
+		if "i_am_tower" in body.get_parent():
+			var tower = body.get_parent()
+			if not tower.activated and not tower.growing:
+				continue
 		
 		min_dist = dist_to_target
-		target = body
+		target_ref = weakref(body)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,10 +55,17 @@ func _process(delta):
 	if !enabled:
 		return
 	
-	if !target:
+	if target_ref and not target_ref.get_ref():
+		target_ref = null
+		return
+	
+	if !target_ref:
 		acquire_target()
-		if !target:
+		if !target_ref:
 			return
+	
+	
+	var target = target_ref.get_ref()
 	
 	var newTarget = target.global_translation
 	newTarget.y = global_translation.y
@@ -59,6 +73,10 @@ func _process(delta):
 	var dist = (global_translation - newTarget).length()
 	#print(global_translation, " ", newTarget)
 	if dist <= my_range:
+#		var p = pole_scn.instance()
+#		get_parent().add_child(p)
+#		p.global_translation = global_translation
+#		queue_free()
 	
 		$LookAt.look_at(newTarget,Vector3.UP)
 		global_transform = global_transform.interpolate_with($LookAt.global_transform,turnSpeed)
@@ -94,12 +112,20 @@ func Fire():
 	particle.emitting = true
 	
 	$AnimationPlayer.play("kickbakc")
-	target = null
+	if target_ref and target_ref.get_ref():
+		var parent = target_ref.get_ref().get_parent()
+		if parent.get_node("Node") != null:
+			#mushroom
+			parent.get_node("Node").alterHealth(-attack_damage)
+		 
+		if parent.has_method("take_damage"):
+			parent.take_damage(attack_damage)
+	target_ref = null
 	
 func takeDamage(damage):
 	TankHealth -= damage
 	get_node("Cube").set_surface_material(0, redMat)
-	print(TankHealth)
+	#print(TankHealth)
 	if(TankHealth <= 0):
 		Die()
 		return
